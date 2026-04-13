@@ -6,13 +6,11 @@
   ...
 }:
 with lib;
-with lib.falak;
-let
-  cfg = config.falak.desktop.addons.kitty;
-in
-{
-  options.falak.desktop.addons.kitty = {
-    enable = mkBoolOpt false "Whether to enable kitty.";
+with lib.falak; let
+  cfg = config.falak.desktop.addons.ghostty;
+in {
+  options.falak.desktop.addons.ghostty = {
+    enable = mkBoolOpt false "Whether to enable ghostty.";
   };
 
   config = mkIf cfg.enable {

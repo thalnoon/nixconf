@@ -7,11 +7,13 @@
   ...
 }:
 with lib;
-with lib.falak;
-let
+with lib.falak; let
   cfg = config.falak.system.networking;
-in
-{
+in {
+  options.falak.system.networking = {
+    bluetooth = mkBoolOpt false "Whether to enable bluetooth.";
+  };
+
   config = {
     networking = {
       hostName = hostName;
@@ -43,7 +45,7 @@ in
 
     hardware.bluetooth.enable = cfg.bluetooth;
     services.blueman.enable = cfg.bluetooth;
-  };
 
-  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
+    environment.systemPackages = with pkgs; [networkmanagerapplet];
+  };
 }

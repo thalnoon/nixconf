@@ -22,14 +22,20 @@ in {
     nvidiaPatches = mkBoolOpt false "Whether to enable nvidia patches for Niri.";
   };
 
-  imports = [
-    inputs.niri.nixosModules.niri
-  ];
-
   config = mkIf cfg.enable {
+    home-manager.sharedModules = [
+      inputs.niri.homeModules.niri
+    ];
+
     programs.niri.enable = true;
 
     # programs.gpu-screen-recorder.enable = true;
+
+    falak.home.extraOptions = {
+      programs.niri = {
+        enable = true;
+      };
+    };
 
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
@@ -73,10 +79,6 @@ in {
       #       --prefix LD_LIBRARY_PATH : ${config.boot.kernelPackages.nvidia_x11}/lib
       #   '')
     ];
-
-    falak.home.extraOptions.wayland.windowManager.niri = {
-      enable = true;
-    };
 
     falak.desktop.addons = {
       ghostty = enabled;

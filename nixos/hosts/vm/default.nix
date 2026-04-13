@@ -5,11 +5,11 @@
   ...
 }:
 with lib;
-with lib.falak;
-{
+with lib.falak; {
   imports = [
     ./hardware.nix
   ];
+
   falak.system.locale.timeZone = "Africa/Cairo";
 
   environment.systemPackages = with pkgs; [
@@ -24,10 +24,9 @@ with lib.falak;
   falak.system.hosts.vm = {
     variant = "dark";
     type = "scheme-tonal-spot";
-    wallpaper =
-      let
-        image = import ./wallpaper.nix;
-      in
+    wallpaper = let
+      image = import ./wallpaper.nix;
+    in
       falak.fetchImage image.url image.sha256;
   };
 
@@ -80,5 +79,4 @@ with lib.falak;
     #   ];
     # };
   };
-
 }

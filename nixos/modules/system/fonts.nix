@@ -6,11 +6,9 @@
   ...
 }:
 with lib;
-with lib.falak;
-let
+with lib.falak; let
   cfg = config.falak.system.fonts;
-in
-{
+in {
   options.falak.system.fonts = {
     nerd-fonts = mkBoolOpt false "Whether to enable nerd-fonts.";
   };
@@ -49,5 +47,4 @@ in
       ];
     };
   };
-
 }

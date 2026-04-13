@@ -39,6 +39,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Nur
+    nur = {
+      url = "github:nix-community/nur";
+    };
+
     niri.url = "github:sodiboo/niri-flake";
   };
 

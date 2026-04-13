@@ -6,11 +6,9 @@
   ...
 }:
 with lib;
-with lib.falak;
-let
+with lib.falak; let
   cfg = config.falak.cli.bat;
-in
-{
+in {
   options.falak.cli.bat = {
     enable = mkBoolOpt false "Whether to enable bat as an alias for ls.";
   };
@@ -18,7 +16,7 @@ in
   config = mkIf cfg.enable {
     programs.bat = {
       enable = true;
-      config = {
+      settings = {
         pager = "less -FR";
         # other styles available and cane be combined
         #  style = "numbers,changes,headers,rule,grid";
@@ -34,9 +32,11 @@ in
       ];
     };
 
-    home.sessionVariables = {
-      MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-      MANROFFOPT = "-c";
+    falak.home.extraOptions = {
+      home.sessionVariables = {
+        MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+        MANROFFOPT = "-c";
+      };
     };
   };
 }

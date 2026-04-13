@@ -6,12 +6,10 @@
   ...
 }:
 with lib;
-with lib.falak;
-let
+with lib.falak; let
   cfg = config.falak.services.ly;
-in
-{
-  options.falak.services.tlp = {
+in {
+  options.falak.services.ly = {
     enable = mkBoolOpt false "Whether to enable ly.";
   };
   config = mkIf cfg.enable {

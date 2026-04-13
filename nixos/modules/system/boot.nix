@@ -2,10 +2,9 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos;
+    kernelPackages = with pkgs; linuxPackagesFor linuxPackages_cachyos;
     # kernelModules = ["v4l2loopback"];
     # extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
     # kernel.sysctl = {"vm.max_map_count" = 2147483642;};
