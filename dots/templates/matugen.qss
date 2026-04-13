@@ -1,0 +1,34 @@
+// QMainWindow {
+//     background: {{colors.background.default.hex}};
+// }
+// QMenuBar {
+//     color: {{colors.surface.default.hex}};
+// }
+// QMenuBar::item:selected {
+//     background: {{colors.primary_container.default.hex}};
+//     color: {{colors.on_primary_container.default.hex}};
+// }
+// QToolBar::handle {
+//    width: 0;
+// }
+
+QMenuBar, QToolBar {
+    background-color: {{colors.background.default.hex}};
+    color: {{colors.on_background.default.hex}};
+}
+
+QMenuBar::item:selected {
+    background-color: {{colors.primary_fixed_dim.default.hex}};
+    color: {{colors.on_primary_fixed.default.hex}};
+}
+
+QMenu {
+    background-color: {{colors.surface_container.default.hex}};
+    color: {{colors.on_surface.default.hex}};
+    border: 1px solid {{colors.outline_variant.default.hex}};
+}
+
+QMenu::item:selected {
+    background-color: {{colors.secondary_container.default.hex}};
+    color: {{colors.on_secondary_container.default.hex}};
+}

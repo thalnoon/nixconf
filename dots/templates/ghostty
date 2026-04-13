@@ -1,0 +1,32 @@
+<* if {{ is_dark_mode }} *>
+background = {{colors.background.default.hex}}
+<* else *>
+background = {{colors.surface_variant.default.hex}}
+<* endif *>
+foreground = {{colors.on_surface.default.hex}}
+cursor-color = {{colors.primary.default.hex}}
+cursor-text = {{colors.on_primary.default.hex}}
+selection-background = {{colors.secondary_container.default.hex}}
+selection-foreground = {{colors.on_secondary_container.default.hex}}
+palette = 1={{colors.error.default.hex}}
+palette = 2={{colors.primary.default.hex}}
+palette = 3={{colors.tertiary.default.hex}}
+palette = 4={{colors.secondary.default.hex}}
+palette = 5={{colors.secondary.default.hex}}
+<* if {{ is_dark_mode }} *>
+palette = 0={{colors.background.default.hex}}
+palette = 6={{palettes.tertiary._60.hex}}
+palette = 15={{colors.outline_variant.default.hex}}
+<* else *>
+palette = 0={{colors.on_surface.default.hex}}
+palette = 6={{palettes.secondary._40.hex}}
+palette = 15={{colors.outline_variant.default.hex}}
+<* endif *>
+palette = 7={{colors.on_surface_variant.default.hex}}
+palette = 8={{colors.outline.default.hex}}
+palette = 9={{colors.error.default.hex}}
+palette = 10={{colors.primary_container.default.hex}}
+palette = 11={{colors.tertiary_container.default.hex}}
+palette = 12={{colors.secondary_container.default.hex}}
+palette = 13={{colors.inverse_primary.default.hex}}
+palette = 14={{colors.outline_variant.default.hex}}

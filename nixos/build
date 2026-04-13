@@ -1,0 +1,1 @@
+nix --extra-experimental-features "nix-command flakes" run github:nixos/nixpkgs/nixos-unstable#nixos-rebuild -- switch --flake ~/gitties/nixconfig#nixos --target-host myuser@192.168.122.19 --ask-sudo-password --sudo

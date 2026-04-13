@@ -1,0 +1,15 @@
+:root {
+    --border-color: {{colors.surface.default.rgba}} ; /* Surface */
+    --border-color-active: {{colors.primary.default.rgba}}; /* Primary */
+
+    --bg-color: rgba(20, 20, 20, 0.8);
+    --bg-color-hover: rgba(40, 40, 50, 1);
+
+    --border-radius: 12px;
+    --border-size: 3px;
+    --border-style: solid;
+
+    --text-color: rgba(245, 245, 245, 1);
+
+    --window-padding: 2px;
+}

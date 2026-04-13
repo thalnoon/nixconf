@@ -1,0 +1,72 @@
+{ config, lib, pkgs, ... }:
+
+{
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
+
+  boot.loader = {
+  	grub.enable = true;
+	grub.efiSupport = true;
+	grub.efiInstallAsRemovable = true;
+	grub.device = "nodev";
+  };
+
+  # Use latest kernel.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+	
+   boot.initrd.kernelModules = [ "virtio_gpu"];
+   boot.kernelModules = [ "virtio_gpu"];
+   hardware.graphics = {
+	enable = true;
+	enable32Bit = true;
+   };
+   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+   networking.hostName = "nixos";
+
+  # Set your time zone.
+  time.timeZone = "UTC";
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.myuser = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [
+      tree
+    ];
+  };
+
+  services.openssh = {
+  	enable = true;
+	settings = {
+		PermitRootLogin = "no";
+		PasswordAuthentication = true;
+	};
+  };
+
+  programs.niri = {
+  	enable = true;
+  };
+
+services.displayManager.ly.enable = true;
+services.spice-vdagentd.enable = true;
+
+  # programs.firefox.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    git
+    ghostty
+    mesa-demos	
+    pciutils
+    wl-clipboard-rs
+    mesa
+    virglrenderer
+  ];
+
+
+}
+
