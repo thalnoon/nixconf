@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
     nix-cachyos-kernel = {
       url = "github:xddxdd/nix-cachyos-kernel/release";
     };
@@ -87,6 +91,7 @@
           modules = [
             ./modules
             (./. + "/hosts/${hostName}")
+            inputs.disko.nixosModules.disko
             {
               nixpkgs.overlays = [
                 nix-cachyos-kernel.overlays.pinned
@@ -106,6 +111,7 @@
   in {
     nixosConfigurations = {
       vm = addNewHost "vm";
+      # laptop = addNewHost "laptop";
     };
     formatter.x86_64-linux = inputs.alejandra.packages.x86_64-linux.default;
   };

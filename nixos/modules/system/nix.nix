@@ -30,7 +30,6 @@ in {
           "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
           "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
           "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
-          "drakon64-nixos-cachyos-kernel.cachix.org-1:J3gjZ9N6S05pyLA/P0M5y7jXpSxO/i0rshrieQJi5D0="
         ];
         substituters = [
           "https://cache.nixos.org"
@@ -39,7 +38,6 @@ in {
           "https://niri.cachix.org"
           "https://cache.garnix.io"
           "https://attic.xuyh0120.win/lantian"
-          "https://drakon64-nixos-cachyos-kernel.cachix.org"
         ];
       };
       optimise.automatic = true;

@@ -7,8 +7,7 @@
   ...
 }:
 with lib;
-with lib.falak;
-let
+with lib.falak; let
   cfg = config.falak.system;
 
   rebuild = pkgs.writeShellScriptBin "rebuild" ''
@@ -20,15 +19,15 @@ let
       --log-format internal-json \
       |& nom --json
   '';
-in
-{
-
+in {
   options.falak.system = {
     diffScript = mkBoolOpt true "Enables showing what packages changes between generations on rebuild.";
-    defaultShell = mkOpt (types.enum [
-      pkgs.bash
-      pkgs.zsh
-    ]) pkgs.zsh "Which shell to use as default.";
+    defaultShell =
+      mkOpt (types.enum [
+        pkgs.bash
+        pkgs.zsh
+      ])
+      pkgs.zsh "Which shell to use as default.";
   };
 
   config = {
@@ -87,6 +86,7 @@ in
     };
 
     falak.home.extraOptions.xdg.userDirs = {
+      setSessionVariables = false;
       createDirectories = true;
       enable = true;
       documents = "$HOME/docs";
